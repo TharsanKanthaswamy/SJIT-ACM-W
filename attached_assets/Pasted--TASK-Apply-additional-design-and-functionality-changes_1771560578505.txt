@@ -1,0 +1,623 @@
+---
+
+```
+TASK: Apply additional design and functionality changes to the website.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 1: HEADER LOGO LAYOUT (HOME PAGE ONLY)
+═══════════════════════════════════════════════════════════════════════════════
+
+CRITICAL CHANGE: Update logo positioning in home page hero section
+
+CURRENT: 3 logos centered horizontally
+NEW: 2 logos with specific positioning
+
+LAYOUT:
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│  [SJIT Logo]                         [ACM-W Logo]          │
+│   (Left side)                         (Right side)         │
+│                                                             │
+│              ACM-W Student Chapter                          │
+│    Artificial Intelligence and Data Science                 │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+IMPLEMENTATION:
+
+1. Remove the 3-logo centered layout
+2. Create new layout with 2 logos:
+   - St. Joseph's Institute of Technology logo: Positioned LEFT
+   - ACM-W official logo: Positioned RIGHT
+   - Both logos: 80x80px (larger than before)
+   - Spacing: Logos should be near the edges with proper padding
+
+3. Logo container structure:
+```jsx
+<div className="flex justify-between items-start max-w-7xl mx-auto px-8 mb-12">
+  {/* Left - SJIT Logo */}
+  <div className="flex-shrink-0">
+    <img 
+      src="/logos/sjit-logo.png" 
+      alt="St. Joseph's Institute of Technology"
+      className="w-20 h-20 object-contain drop-shadow-lg"
+    />
+  </div>
+  
+  {/* Right - ACM-W Logo */}
+  <div className="flex-shrink-0">
+    <img 
+      src="/logos/acmw-logo.png" 
+      alt="ACM-W"
+      className="w-20 h-20 object-contain drop-shadow-lg"
+    />
+  </div>
+</div>
+```
+
+4. Placeholder styling (until real logos provided):
+   - Left logo: Colored background circle with "SJIT" text
+   - Right logo: Blue-grey background circle with "ACM-W" text
+
+NOTE: This layout applies ONLY to home page hero. Other pages keep centered 3-logo layout or adjust as needed.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 2: DEPARTMENT NAME ADDITION
+═══════════════════════════════════════════════════════════════════════════════
+
+UPDATE: Add department name throughout the website
+
+LOCATION 1 - HOME PAGE HERO (primary):
+After "ACM-W Student Chapter" heading, add new line:
+
+OLD:
+```
+ACM-W Student Chapter
+St. Joseph's Institute of Technology
+Empowering women in computing...
+```
+
+NEW:
+```
+ACM-W Student Chapter
+Artificial Intelligence and Data Science
+St. Joseph's Institute of Technology
+Empowering women in computing...
+```
+
+STYLING:
+- "Artificial Intelligence and Data Science": text-2xl md:text-3xl, font-semibold, text-accent-200
+- Position between chapter name and institution name
+- Center-aligned
+
+LOCATION 2 - ABOUT PAGE:
+Update "Our Chapter" section first paragraph:
+
+OLD:
+"St. Joseph's Institute of Technology has always been at the forefront of technical education."
+
+NEW:
+"The Department of Artificial Intelligence and Data Science at St. Joseph's Institute of Technology has always been at the forefront of technical education."
+
+LOCATION 3 - FOOTER:
+Update "About" column content:
+
+OLD:
+"Empowering women in computing since 2025."
+
+NEW:
+"Department of Artificial Intelligence and Data Science. Empowering women in computing since 2025."
+
+LOCATION 4 - TEAM PAGE HERO:
+Add subtitle below heading:
+
+NEW:
+Heading: "Meet Our Team"
+Subtitle: "Department of Artificial Intelligence and Data Science"
+Subheading: "The dedicated students and faculty behind our chapter's success"
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 3: STATS UPDATE - MEMBERS COUNT
+═══════════════════════════════════════════════════════════════════════════════
+
+UPDATE STATS GRID:
+
+CARD 2 (Members):
+OLD Value: "100+"
+NEW Value: "20+"
+
+Keep label as "Members"
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 4: OFFICE BEARERS COUNT UPDATE
+═══════════════════════════════════════════════════════════════════════════════
+
+TEMPORARY PLACEHOLDER:
+
+CARD 4 (Office Bearers):
+Current Value: "13"
+Action: KEEP AS "13" for now
+
+NOTE TO USER: You will provide updated office bearers list later. The value will be updated when you provide the new list with correct count.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 5: "READ OUR HISTORY" BUTTON FUNCTIONALITY
+═══════════════════════════════════════════════════════════════════════════════
+
+UPDATE BUTTON BEHAVIOR:
+
+CURRENT:
+"Read our History" button → Links to /about
+
+NEW:
+"Read our History" button → Links to Events section on same page (home page)
+
+IMPLEMENTATION:
+
+1. Add ID to Events section on home page:
+```jsx
+<section id="events" className="py-16 bg-neutral-50">
+  {/* Events content */}
+</section>
+```
+
+2. Update button in "Legacy of Innovation" section:
+```jsx
+<a 
+  href="#events"
+  className="inline-block px-8 py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg font-semibold transition-colors"
+>
+  Read our History
+</a>
+```
+
+3. Add smooth scroll behavior:
+```jsx
+// In app/layout.tsx or global CSS
+html {
+  scroll-behavior: smooth;
+}
+```
+
+EXPECTED BEHAVIOR:
+- User clicks "Read our History" button
+- Page smoothly scrolls down to Events section on same page
+- Events section displays event cards with photos (when uploaded) and "Read details" buttons
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 6: CONTACT FORM - ADMIN VIEW INTEGRATION
+═══════════════════════════════════════════════════════════════════════════════
+
+CRITICAL CHANGE: Remove email functionality, route to admin panel only
+
+CONTACT FORM BEHAVIOR UPDATE:
+
+CURRENT FLOW:
+1. User submits contact form
+2. Message saved to Supabase contact_messages table
+3. Email sent to acmwomen@stjosephstechnology.ac.in
+
+NEW FLOW:
+1. User submits contact form
+2. Message saved to Supabase contact_messages table
+3. NO email sent
+4. Admin views messages in admin panel at /admin/messages
+
+IMPLEMENTATION CHANGES:
+
+1. REMOVE email sending functionality from contact form submission
+2. Contact form should ONLY:
+   - Validate input (required fields, email format)
+   - Insert to contact_messages table with status: 'new'
+   - Show success toast: "Message sent! We'll get back to you soon."
+   - Clear form after successful submission
+
+3. Admin panel (/admin/messages) should:
+   - Display all contact messages in a table
+   - Show badge count for "new" messages in sidebar
+   - Allow admin to:
+     * View full message
+     * Mark as "read" or "replied"
+     * Delete message
+   - Sort by newest first
+   - Highlight new messages (unread)
+
+4. Admin dashboard overview should show:
+   - Card: "Unread Messages" with count of messages where status = 'new'
+   - Quick link to /admin/messages
+
+UPDATED CONTACT FORM SUCCESS MESSAGE:
+"Thank you for reaching out! Your message has been received. Our team will review it and get back to you soon."
+
+BENEFIT EXPLANATION (for documentation):
+"Contact messages are managed through the admin panel, allowing the team to organize, track, and respond to inquiries efficiently without cluttering the official email inbox."
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 7: ADMIN MESSAGES VIEW ENHANCEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+IMPROVE /admin/messages page with better UX:
+
+TABLE COLUMNS:
+1. Status indicator (badge: New/Read/Replied)
+2. Name
+3. Email (clickable mailto link)
+4. Message preview (first 50 characters)
+5. Date received (formatted: "Feb 20, 2026 at 3:45 PM")
+6. Actions (View Details, Mark as Read, Delete)
+
+STATUS BADGES:
+- New: bg-accent-200 text-primary-900 (warm beige)
+- Read: bg-neutral-200 text-neutral-700 (gray)
+- Replied: bg-primary-600 text-white (navy)
+
+FILTERS (tabs at top):
+- All Messages (default)
+- New (status = 'new')
+- Read (status = 'read')
+- Replied (status = 'replied')
+
+MESSAGE DETAIL MODAL:
+When "View Details" clicked, open modal with:
+- Full message text
+- Sender name and email
+- Date received
+- Actions:
+  * Copy email address (button)
+  * Mark as Read (button)
+  * Mark as Replied (button)
+  * Delete (button with confirmation)
+  * Close modal (X button)
+
+SIDEBAR BADGE:
+In admin sidebar navigation, show unread count:
+```
+Messages (5)  ← if 5 new messages
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 8: OFFICE BEARERS SHUFFLE NOTICE
+═══════════════════════════════════════════════════════════════════════════════
+
+IMPORTANT NOTE FOR FUTURE UPDATE:
+
+The office bearers posts and positions are different from the initial seed data.
+DO NOT UPDATE office bearers data yet.
+
+USER WILL PROVIDE:
+- Complete list of new office bearers
+- Exact positions/titles
+- Order/hierarchy
+- Count may be different from 13
+
+FOR NOW:
+- Keep existing 13 team members in database
+- Keep display showing "13 Office Bearers" in stats
+- Admin can edit via /admin/team when ready
+- Structure is ready to accommodate any number of office bearers
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 9: EVENTS SECTION - PHOTO & REPORT DISPLAY
+═══════════════════════════════════════════════════════════════════════════════
+
+UPDATE EVENT CARDS to emphasize photos and reports:
+
+EVENT CARD LAYOUT (when images exist):
+```jsx
+<div className="bg-white rounded-xl shadow-soft hover:shadow-strong transition-all overflow-hidden">
+  {/* Featured Image (if exists) */}
+  {event.images && event.images.length > 0 && (
+    <div className="relative h-64 overflow-hidden">
+      <img 
+        src={event.images[0]} 
+        alt={event.title}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+      />
+      {/* Image count badge */}
+      {event.images.length > 1 && (
+        <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+          📸 {event.images.length} photos
+        </div>
+      )}
+    </div>
+  )}
+  
+  {/* Card content */}
+  <div className="p-6">
+    {/* Status and date */}
+    <div className="flex justify-between items-center mb-4">
+      <span className="bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+        Past Event
+      </span>
+      <span className="text-neutral-600 text-sm">
+        {formattedDate}
+      </span>
+    </div>
+    
+    {/* Title and description */}
+    <h3>{event.title}</h3>
+    <p>{event.short_description}</p>
+    
+    {/* Action buttons */}
+    <div className="flex gap-3 mt-4">
+      <button className="flex-1 bg-primary-600 hover:bg-primary-700 text-white">
+        📖 View Report
+      </button>
+      {event.images && event.images.length > 0 && (
+        <button className="flex-1 border-2 border-primary-600 text-primary-600 hover:bg-primary-50">
+          📸 View Photos
+        </button>
+      )}
+    </div>
+  </div>
+</div>
+```
+
+EVENT DETAIL MODAL/PAGE should include:
+- Full summary/report
+- Image gallery (if images exist)
+- Date and details
+- Download report button (future: PDF upload)
+
+NOTE FOR USER: You will upload event photos and reports later via admin panel.
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 10: IMPLEMENTATION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Apply these changes in order:
+
+STEP 1: Header Logo Layout
+☐ Update home page hero with 2-logo left-right layout
+☐ SJIT logo positioned left
+☐ ACM-W logo positioned right
+☐ Increase logo size to 80x80px
+
+STEP 2: Department Name
+☐ Add "Artificial Intelligence and Data Science" to home hero
+☐ Update About page paragraph
+☐ Update footer About section
+☐ Add to Team page hero
+
+STEP 3: Stats Update
+☐ Change Members from "100+" to "20+"
+☐ Keep Office Bearers as "13" (temporary)
+
+STEP 4: Button Functionality
+☐ Change "Read our History" to scroll to #events section
+☐ Add smooth scroll behavior
+
+STEP 5: Contact Form Changes
+☐ Remove email sending functionality
+☐ Keep Supabase insert only
+☐ Update success message
+
+STEP 6: Admin Messages Enhancement
+☐ Improve messages table layout
+☐ Add status badges and filters
+☐ Add unread count to sidebar
+☐ Create message detail modal
+☐ Add dashboard unread messages card
+
+STEP 7: Events Display
+☐ Update event cards for photo/report emphasis
+☐ Add image count badge
+☐ Add "View Report" and "View Photos" buttons
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 11: VERIFICATION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+After implementation, verify:
+
+HOME PAGE:
+☐ Two logos displayed (left: SJIT, right: ACM-W)
+☐ Department name appears between chapter name and institution
+☐ Stats show "20+" members
+☐ "Read our History" button scrolls to events section smoothly
+
+ABOUT PAGE:
+☐ Department name in first paragraph
+
+TEAM PAGE:
+☐ Department name in hero subtitle
+
+FOOTER:
+☐ Department name in About section
+
+CONTACT FORM:
+☐ Submits successfully without sending email
+☐ Shows updated success message
+☐ Message appears in admin panel
+
+ADMIN MESSAGES:
+☐ All messages display in table
+☐ Status badges show correctly
+☐ Filters work (All/New/Read/Replied)
+☐ Unread count shows in sidebar
+☐ Modal opens with full message details
+
+EVENTS SECTION:
+☐ Cards show photo count badge (when images exist)
+☐ "View Report" and "View Photos" buttons present
+
+═══════════════════════════════════════════════════════════════════════════════
+PART 12: FUTURE UPDATES (USER TO PROVIDE)
+═══════════════════════════════════════════════════════════════════════════════
+
+USER WILL PROVIDE LATER:
+1. Actual SJIT logo image (replace placeholder)
+2. Actual ACM-W logo image (replace placeholder)
+3. Complete new office bearers list with positions
+4. Office bearers count (to update stats)
+5. Event photos for upload (via admin panel)
+6. Event reports/PDFs for download
+
+SYSTEM IS READY FOR:
+- Logo image uploads
+- Office bearers update via admin panel
+- Event photos upload (multiple per event)
+- Any number of office bearers (not fixed to 13)
+
+═══════════════════════════════════════════════════════════════════════════════
+END OF ADDITIONAL UPDATES
+═══════════════════════════════════════════════════════════════════════════════
+
+AGENT ACTION: Apply all changes specified above. Focus on:
+1. Logo layout (2 logos, left-right positioning)
+2. Department name integration (4 locations)
+3. Contact form admin-only routing (no email sending)
+4. Enhanced admin messages view
+5. "Read our History" scroll behavior
+6. Stats update (20+ members)
+7. Event cards with photo/report emphasis
+
+Test all functionality after implementation. Ensure smooth scrolling, admin panel updates, and responsive design work correctly.
+```
+
+---
+
+## 📋 SUMMARY OF CHANGES
+
+### **Visual Changes:**
+1. ✅ **Logo Layout:** 2 logos (SJIT left, ACM-W right) instead of 3 centered
+2. ✅ **Department Name:** Added in 4 locations (hero, about, team, footer)
+3. ✅ **Stats:** Updated to "20+" members
+
+### **Functional Changes:**
+4. ✅ **Read History Button:** Scrolls to events section (smooth scroll)
+5. ✅ **Contact Form:** Routes to admin panel only (NO email sending)
+6. ✅ **Admin Messages:** Enhanced view with filters, badges, modal
+
+### **Content Changes:**
+7. ✅ **Department:** "Artificial Intelligence and Data Science" integrated
+8. ✅ **Event Cards:** Emphasis on photos and reports with dual buttons
+
+### **Pending (You'll Provide Later):**
+9. ⏳ **Office Bearers:** New list with positions (count may change)
+10. ⏳ **Logos:** Actual image files to replace placeholders
+11. ⏳ **Event Media:** Photos and reports to upload via admin
+
+---
+
+## 🎯 WHAT THIS ACHIEVES
+
+### **Better Logo Presentation:**
+```
+OLD: [Logo] [Logo] [Logo]  ← Centered, crowded
+NEW: [SJIT Logo]        [ACM-W Logo]  ← Clear institutional identity
+```
+
+### **Clearer Identity:**
+```
+ACM-W Student Chapter
+Artificial Intelligence and Data Science  ← NEW: Dept identity
+St. Joseph's Institute of Technology
+```
+
+### **Better Admin Workflow:**
+```
+OLD: Contact form → Email (cluttered inbox)
+NEW: Contact form → Admin panel → Organized tracking
+```
+
+### **Better User Journey:**
+```
+"Read our History" → Smooth scroll to Events → See photos/reports
+```
+
+---
+
+## ✅ POST-UPDATE VERIFICATION
+
+After Replit Agent applies these changes:
+
+### **Check Home Page:**
+- [ ] Two logos visible (left and right, not centered)
+- [ ] Department name appears between chapter and institution
+- [ ] Stats show "20+" members
+- [ ] Click "Read our History" → smoothly scrolls to events
+
+### **Test Contact Form:**
+- [ ] Submit a test message
+- [ ] Check it appears in /admin/messages (NOT in email)
+- [ ] Verify success message shows
+- [ ] Check unread count appears in admin sidebar
+
+### **Check Admin Messages:**
+- [ ] Table displays with all columns
+- [ ] Status badges show correctly
+- [ ] Filters work (click All/New/Read/Replied tabs)
+- [ ] Click "View Details" → modal opens
+- [ ] Email link is clickable (mailto)
+
+### **Check All Pages:**
+- [ ] Department name appears in 4 locations (hero, about, team, footer)
+- [ ] Layout is responsive on mobile
+- [ ] Smooth scroll works across all sections
+
+---
+
+## 🔧 QUICK FIXES IF NEEDED
+
+### **If logos overlap on mobile:**
+```jsx
+// Add to logo container
+className="flex justify-between items-start px-4 md:px-8"
+```
+
+### **If department name too long on mobile:**
+```jsx
+// Add to department text
+className="text-lg md:text-2xl lg:text-3xl px-4"
+```
+
+### **If smooth scroll doesn't work:**
+```css
+/* Add to global CSS */
+html {
+  scroll-behavior: smooth;
+}
+```
+
+### **If admin sidebar doesn't show count:**
+```jsx
+// Messages link should be
+<Link href="/admin/messages">
+  Messages {unreadCount > 0 && `(${unreadCount})`}
+</Link>
+```
+
+---
+
+## 📝 NOTES FOR YOU
+
+### **When You're Ready to Update:**
+
+**1. Office Bearers (Later):**
+- Go to `/admin/team`
+- Delete existing 13 members
+- Add new office bearers one by one
+- Set correct `order_position` for hierarchy
+- Update stats manually or it will auto-update
+
+**2. Logos (Later):**
+- Save logo files as: `sjit-logo.png`, `acmw-logo.png`
+- Upload to `/public/logos/` folder
+- Transparent PNG format recommended
+- Size: 200x200px minimum (will display at 80x80px)
+
+**3. Event Photos (Later):**
+- Go to `/admin/events`
+- Edit each event
+- Upload multiple images
+- First image becomes featured image
+- Others appear in gallery
+
+**4. Contact Messages:**
+- Check `/admin/messages` regularly
+- Filter by "New" to see unread
+- Mark as "Replied" after responding
+- Email addresses are clickable (opens default mail app)
+
+---

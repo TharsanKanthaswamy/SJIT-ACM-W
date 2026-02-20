@@ -54,15 +54,31 @@ export default function Home() {
       <Navigation />
 
       {/* --- HERO SECTION --- */}
-      <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-primary text-white pt-20">
+      <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-primary text-white pt-20">
         <div className="absolute inset-0 z-0">
           {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#152E40] opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#456882] opacity-90" />
           
           {/* Abstract Pattern */}
           <svg className="absolute top-0 right-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M0 100 L100 0 L100 100 Z" fill="white" />
           </svg>
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 mb-12 flex justify-between items-start">
+          {/* Left - SJIT Logo */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-accent-200 rounded-full flex items-center justify-center shadow-lg text-primary font-bold text-xs text-center p-2">
+              SJIT
+            </div>
+          </div>
+          
+          {/* Right - ACM-W Logo */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-slate-400 rounded-full flex items-center justify-center shadow-lg text-white font-bold text-xs text-center p-2">
+              ACM-W
+            </div>
+          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -71,14 +87,17 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium tracking-wide mb-6 border border-white/20">
-              Welcome to St. Joseph's Institute of Technology
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-4 leading-tight tracking-tight">
               ACM-W Student <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Chapter</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+            <div className="text-2xl md:text-3xl font-semibold text-accent-200 mb-2">
+              Artificial Intelligence and Data Science
+            </div>
+            <div className="text-xl md:text-2xl text-blue-100 mb-8 font-medium">
+              St. Joseph's Institute of Technology
+            </div>
+            <p className="text-lg md:text-xl text-blue-100/80 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
               Empowering women in computing, fostering leadership, and celebrating diversity in technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -118,7 +137,7 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-border">
           {[
             { label: "Founded", value: "2025" },
-            { label: "Members", value: "100+" },
+            { label: "Members", value: "20+" },
             { label: "Events", value: "6+" },
             { label: "Office Bearers", value: "13" },
           ].map((stat, idx) => (
@@ -196,7 +215,7 @@ export default function Home() {
             >
               <h3 className="text-3xl font-display font-bold mb-6 text-primary">A Legacy of Innovation</h3>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                St. Joseph's Institute of Technology has always been at the forefront of technical education. 
+                The Department of Artificial Intelligence and Data Science at St. Joseph's Institute of Technology has always been at the forefront of technical education. 
                 With the establishment of the ACM-W Student Chapter, we are taking a significant step towards 
                 bridging the gender gap in technology.
               </p>
@@ -204,7 +223,11 @@ export default function Home() {
                 Our chapter provides a platform for students to connect with industry professionals, participate 
                 in hackathons, and develop leadership skills that will serve them throughout their careers.
               </p>
-              <Button variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-white">
+              <Button 
+                variant="outline" 
+                className="rounded-full border-primary text-primary hover:bg-primary hover:text-white"
+                onClick={() => document.getElementById("events")?.scrollIntoView({ behavior: "smooth" })}
+              >
                 Read our History
               </Button>
             </motion.div>
@@ -245,7 +268,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading 
             title="Meet Our Team" 
-            subtitle="The dedicated students and faculty behind our chapter's success."
+            subtitle="Department of Artificial Intelligence and Data Science. The dedicated students and faculty behind our chapter's success."
           />
 
           {teamLoading ? (

@@ -12,7 +12,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-display font-bold">ACM-W</h3>
             <p className="text-primary-foreground/70 max-w-xs leading-relaxed">
-              Empowering women in technology through community, mentorship, and opportunities.
+              Department of Artificial Intelligence and Data Science. Empowering women in computing since 2025.
               St. Joseph's Institute of Technology Student Chapter.
             </p>
           </div>
