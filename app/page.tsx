@@ -28,42 +28,42 @@ export default async function Home() {
     <div className="bg-background">
 
       {/* 1. Hero Section */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-gradient-to-br from-[#1B3C53] via-[#2D5A7B] to-[#4A728E]">
+      <section className="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-gradient-to-br from-[#1B3C53] via-[#2D5A7B] to-[#4A728E]">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
         {/* Decorative circle matching the screenshot */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 shadow-soft-xl hidden md:flex">
+        <div className="absolute top-24 right-32 w-40 h-40 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 shadow-soft-xl hidden md:flex">
           <span className="text-white font-bold text-sm tracking-widest">ACM-W</span>
         </div>
-        <div className="absolute top-40 left-20 w-24 h-24 bg-[#1B3C53]/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/5 shadow-soft-xl hidden md:flex">
+        <div className="absolute top-48 left-24 w-28 h-28 bg-[#1B3C53]/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/5 shadow-soft-xl hidden md:flex">
           <span className="text-[#D2C1B6]/50 font-bold text-xs tracking-widest">SJIT</span>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto space-y-6 pt-12">
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold font-serif text-[#142C3D] opacity-40 tracking-tight leading-none absolute -top-16 md:-top-24 left-1/2 -translate-x-1/2 w-full select-none">
+        <div className="relative z-10 max-w-5xl mx-auto space-y-6 pt-16">
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-extrabold font-serif text-[#142C3D] opacity-40 tracking-tight leading-none absolute -top-20 md:-top-32 left-1/2 -translate-x-1/2 w-full select-none whitespace-nowrap">
             ACM-W Student
           </h1>
 
-          <h2 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-serif text-white tracking-tight leading-tight relative mt-16 md:mt-24">
+          <h2 className="text-7xl md:text-9xl lg:text-[11rem] font-extrabold font-serif text-white tracking-tight leading-none relative mt-16 md:mt-24">
             Chapter
           </h2>
 
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mt-8 tracking-wide">
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-12 mb-4 tracking-wide">
             Artificial Intelligence and Data Science
           </h3>
 
-          <p className="text-xl md:text-3xl text-white/90 font-medium pb-8 border-b border-white/20 inline-block px-12">
+          <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 font-medium pb-8 border-b border-white/20 inline-block px-12">
             St. Joseph's Institute of Technology
           </p>
 
-          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto font-light pt-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto font-light pt-8 leading-relaxed">
             Empowering women in computing, fostering leadership, and celebrating diversity in technology.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12">
-            <Link href="#events" className="w-full sm:w-auto px-8 py-4 bg-white text-[#1B3C53] rounded-full font-bold shadow-soft-lg hover:shadow-soft-xl hover:scale-105 transition-all duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16">
+            <Link href="#events" className="w-full sm:w-auto px-10 py-5 bg-white text-[#1B3C53] rounded-[2rem] text-lg font-bold shadow-soft-xl hover:shadow-soft-2xl hover:scale-105 transition-all duration-300">
               View Upcoming Events
             </Link>
-            <Link href="#about" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300">
+            <Link href="#about" className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white text-white rounded-[2rem] text-lg font-bold hover:bg-white/10 transition-all duration-300">
               Learn More
             </Link>
           </div>
