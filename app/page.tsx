@@ -28,110 +28,166 @@ export default async function Home() {
     <div className="bg-background">
 
       {/* 1. Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#456882]">
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-gradient-to-br from-[#1B3C53] via-[#2D5A7B] to-[#4A728E]">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+        {/* Decorative circle matching the screenshot */}
+        <div className="absolute top-20 right-20 w-32 h-32 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 shadow-soft-xl hidden md:flex">
+          <span className="text-white font-bold text-sm tracking-widest">ACM-W</span>
+        </div>
+        <div className="absolute top-40 left-20 w-24 h-24 bg-[#1B3C53]/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/5 shadow-soft-xl hidden md:flex">
+          <span className="text-[#D2C1B6]/50 font-bold text-xs tracking-widest">SJIT</span>
+        </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto space-y-12">
-          {/* Dual Logos (Simulated with placeholders or icons, since actual static logos aren't provided yet) */}
-          <div className="flex justify-center items-center gap-8 md:gap-16 mb-8">
-            <div className="w-24 h-24 md:w-32 md:h-32 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-soft-xl">
-              <span className="text-white font-bold font-serif text-xl">SJIT</span>
-            </div>
-            <div className="w-24 h-24 md:w-32 md:h-32 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-soft-xl">
-              <span className="text-[#D2C1B6] font-bold font-serif text-xl">ACM-W</span>
-            </div>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold font-serif text-white tracking-tight leading-tight">
-            Empowering Women <br />
-            <span className="text-[#D2C1B6]">in Computing</span>
+        <div className="relative z-10 max-w-5xl mx-auto space-y-6 pt-12">
+          <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold font-serif text-[#142C3D] opacity-40 tracking-tight leading-none absolute -top-16 md:-top-24 left-1/2 -translate-x-1/2 w-full select-none">
+            ACM-W Student
           </h1>
 
-          <p className="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto font-light">
-            St. Joseph&apos;s Institute of Technology ACM-W Student Chapter
+          <h2 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-serif text-white tracking-tight leading-tight relative mt-16 md:mt-24">
+            Chapter
+          </h2>
+
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mt-8 tracking-wide">
+            Artificial Intelligence and Data Science
+          </h3>
+
+          <p className="text-xl md:text-3xl text-white/90 font-medium pb-8 border-b border-white/20 inline-block px-12">
+            St. Joseph's Institute of Technology
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-            <Link href="/updates" className="w-full sm:w-auto px-8 py-4 bg-[#D2C1B6] text-[#1B3C53] rounded-full font-bold shadow-soft-lg hover:shadow-soft-xl hover:-translate-y-1 transition-all duration-300">
-              View Latest Updates
+          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto font-light pt-8 leading-relaxed">
+            Empowering women in computing, fostering leadership, and celebrating diversity in technology.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12">
+            <Link href="#events" className="w-full sm:w-auto px-8 py-4 bg-white text-[#1B3C53] rounded-full font-bold shadow-soft-lg hover:shadow-soft-xl hover:scale-105 transition-all duration-300">
+              View Upcoming Events
             </Link>
-            <Link href="#events" className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-[#D2C1B6] text-[#D2C1B6] rounded-full font-bold hover:bg-[#D2C1B6]/10 transition-all duration-300">
-              Upcoming Events
+            <Link href="#about" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300">
+              Learn More
             </Link>
           </div>
         </div>
       </section>
 
       {/* 2. Stats Grid */}
-      <section className="py-20 md:py-24 bg-white relative -mt-10 rounded-t-[3rem] shadow-soft-xl z-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
-            {[
-              { icon: Users, label: 'Active Members', value: '150+' },
-              { icon: Code2, label: 'Hackathons', value: '12' },
-              { icon: Globe2, label: 'Tech Talks', value: '25+' },
-              { icon: Lightbulb, label: 'Projects', value: '40+' },
-            ].map((stat, i) => (
-              <div key={i} className="group p-6">
-                <div className="mx-auto w-16 h-16 bg-[#1B3C53]/5 text-[#1B3C53] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#1B3C53] group-hover:text-white transition-colors duration-500 shadow-soft">
-                  <stat.icon size={32} />
-                </div>
-                <h3 className="text-4xl font-extrabold font-serif text-[#1B3C53] mb-2">{stat.value}</h3>
-                <p className="text-gray-500 font-medium uppercase tracking-wider text-sm">{stat.label}</p>
+      <section className="py-8 bg-transparent relative -mt-24 md:-mt-32 z-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-white rounded-[2rem] shadow-soft-xl border border-gray-100 p-8 md:p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+              <div className="px-2">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">2025</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Founded</p>
               </div>
-            ))}
+              <div className="px-2">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">20+</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Members</p>
+              </div>
+              <div className="px-2 hidden md:block">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">6+</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Events</p>
+              </div>
+              <div className="px-2 hidden md:block">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">13</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Office Bearers</p>
+              </div>
+            </div>
+            {/* Mobile missing elements layout */}
+            <div className="grid grid-cols-2 gap-8 text-center divide-x divide-gray-100 mt-8 pt-8 border-t border-gray-100 md:hidden">
+              <div className="px-2">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">6+</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Events</p>
+              </div>
+              <div className="px-2">
+                <h3 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] mb-3">13</h3>
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">Office Bearers</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Mission & History */}
-      <section className="py-24 bg-[#F8F7F6]">
+      {/* 3. Mission & core values */}
+      <section id="about" className="py-24 bg-[#F8F7F6]">
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
             title="Our Mission"
-            subtitle="We support, celebrate, and advocate internationally for the full engagement of women in all aspects of the computing field."
+            subtitle="We support, celebrate, and advocate for the full engagement of women in all aspects of the computing field."
           />
 
-          <div className="grid md:grid-cols-2 gap-16 items-center mt-20">
-            <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-soft-xl group">
-              {/* Note: In a real app, use a real Image. Here we use a stylized placeholder */}
-              <div className="absolute inset-0 bg-[#1B3C53] flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-                <Globe2 size={120} className="text-[#234C6A] opacity-50" />
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
+            {/* Value 1 */}
+            <div className="bg-white p-10 rounded-3xl shadow-soft border border-gray-100/50 hover:shadow-soft-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-[#F8F7F6] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#1B3C53] group-hover:text-white transition-colors duration-300">
+                <Users size={28} className="text-[#1B3C53] group-hover:text-white transition-colors" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8 text-white">
-                <h3 className="text-2xl font-bold font-serif mb-2">Since 2023</h3>
-                <p className="font-light text-blue-50">Building a stronger community for women in technology.</p>
+              <h3 className="text-2xl font-bold font-serif text-[#1B3C53] mb-4">Community</h3>
+              <p className="text-gray-500 font-light leading-relaxed">
+                Building a supportive network of women in technology to foster collaboration and growth.
+              </p>
+            </div>
+
+            {/* Value 2 */}
+            <div className="bg-white p-10 rounded-3xl shadow-soft border border-gray-100/50 hover:shadow-soft-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-[#F8F7F6] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#1B3C53] group-hover:text-white transition-colors duration-300">
+                <Code2 size={28} className="text-[#1B3C53] group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-2xl font-bold font-serif text-[#1B3C53] mb-4">Learning</h3>
+              <p className="text-gray-500 font-light leading-relaxed">
+                Providing workshops, technical sessions, and resources to enhance technical skills.
+              </p>
+            </div>
+
+            {/* Value 3 */}
+            <div className="bg-white p-10 rounded-3xl shadow-soft border border-gray-100/50 hover:shadow-soft-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-[#F8F7F6] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#1B3C53] group-hover:text-white transition-colors duration-300">
+                <Lightbulb size={28} className="text-[#1B3C53] group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-2xl font-bold font-serif text-[#1B3C53] mb-4">Excellence</h3>
+              <p className="text-gray-500 font-light leading-relaxed">
+                Celebrating achievements and inspiring members to reach their full potential in computing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Legacy Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-soft-xl group">
+              <div className="absolute inset-0 bg-[#D2C1B6] flex items-center justify-center">
+                <Globe2 size={80} className="text-white/50" />
               </div>
             </div>
 
-            <div className="space-y-8">
-              <h3 className="text-3xl font-bold font-serif text-[#1B3C53]">Learn, Grow, Network.</h3>
-              <p className="text-lg text-gray-600 font-light leading-relaxed">
-                The ACM-W Student Chapter provides a platform for students to explore their passion for technology. We organize hands-on technical workshops, insightful guest lectures from industry leaders, and collaborative coding events.
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold font-serif text-[#1B3C53] tracking-tight">
+                A Legacy of Innovation
+              </h2>
+              <p className="text-lg text-gray-500 font-light leading-relaxed">
+                The Department of Artificial Intelligence and Data Science at St. Joseph's Institute of Technology has always been at the forefront of technical education. With the establishment of the ACM-W Student Chapter, we are taking a significant step towards bridging the gender gap in technology.
               </p>
-              <p className="text-lg text-gray-600 font-light leading-relaxed">
-                Our goal is to bridge the gender gap in technology by providing mentorship, resources, and leadership opportunities to our members, ensuring they are well-equipped for their future careers in computing.
-              </p>
-              <div className="pt-4 border-t border-gray-200">
-                <Link href="/updates" className="text-[#1B3C53] font-bold hover:text-[#234C6A] flex items-center gap-2 group">
-                  See our journey <span className="group-hover:translate-x-2 transition-transform">→</span>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* 4. Events Section */}
-      <section id="events" className="py-24 bg-white">
+      <section id="events" className="py-24 bg-[#F8F7F6] relative z-10">
         <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            title="Events & Workshops"
-            subtitle="Join us for technical sessions, networking events, and community gatherings."
-          />
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-extrabold font-serif text-[#1B3C53] mb-6">
+              Upcoming Events
+            </h2>
+            <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto">
+              Join us for workshops, tech talks, and networking sessions.
+            </p>
+            <div className="w-16 h-0.5 bg-gray-300 mx-auto mt-8"></div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {events?.map((event, index) => (
               <EventCard key={event.id} event={event} index={index} />
             ))}
@@ -145,14 +201,19 @@ export default async function Home() {
       </section>
 
       {/* 5. Team Section */}
-      <section id="team" className="py-24 bg-[#F8F7F6]">
+      <section id="team" className="py-24 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            title="Meet Our Leaders"
-            subtitle="The dedicated students driving the ACM-W mission forward."
-          />
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-extrabold font-serif text-[#1B3C53] mb-6">
+              Our Team
+            </h2>
+            <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto">
+              The dedicated students driving the ACM-W mission forward.
+            </p>
+            <div className="w-16 h-0.5 bg-gray-300 mx-auto mt-8"></div>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 mt-12">
             {teamMembers?.map((member, index) => (
               <TeamMemberCard key={member.id} member={member} index={index} />
             ))}
@@ -162,10 +223,6 @@ export default async function Home() {
 
       {/* 6. Contact Section */}
       <section id="contact" className="py-24 bg-[#1B3C53] relative overflow-hidden">
-        {/* Decorative blur circles */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#D2C1B6]/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
-
         <div className="relative max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-white space-y-8">
             <h2 className="text-4xl md:text-6xl font-extrabold font-serif leading-tight">
