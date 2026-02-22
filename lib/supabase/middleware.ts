@@ -35,7 +35,7 @@ export async function updateSession(request: NextRequest) {
 
     const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
     const isLoginRoute = request.nextUrl.pathname === '/admin/login'
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    const adminEmail = process.env.ADMIN_EMAIL
 
     if (isAdminRoute && !isLoginRoute) {
         // 1. If not authenticated, redirect to login

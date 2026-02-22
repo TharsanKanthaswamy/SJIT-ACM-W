@@ -1,0 +1,11 @@
+﻿[dotenv@17.3.1] injecting env (4) from .env -- tip: ΓÜí∩╕Å secrets for agents: https://dotenvx.com/as2
+Available Buckets: []
+Files in 'assests': []
+Files in 'assets': []
+Events count: 6 Error: null
+Team count: undefined Error: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.team_members'",
+  message: "Could not find the table 'public.teamMembers' in the schema cache"
+}

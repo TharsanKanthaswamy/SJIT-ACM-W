@@ -1,0 +1,34 @@
+[
+  {
+    "bucket_id": "assets",
+    "name": "SJIT_logo.webp"
+  },
+  {
+    "bucket_id": "assets",
+    "name": "ACM-W_logo.webp"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "inaugration/.emptyFolderPlaceholder"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "intellecta/.emptyFolderPlaceholder"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "unglitch/.emptyFolderPlaceholder"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "virtual-csi/.emptyFolderPlaceholder"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "code-herofest/.emptyFolderPlaceholder"
+  },
+  {
+    "bucket_id": "event-images",
+    "name": "ai-unplugged/.emptyFolderPlaceholder"
+  }
+]

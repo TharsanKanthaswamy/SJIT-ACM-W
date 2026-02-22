@@ -1,0 +1,10 @@
+﻿[dotenv@17.3.1] injecting env (4) from .env -- tip: ≡ƒñû agentic secret storage: https://dotenvx.com/as2
+Error: undefined
+Team Columns: [
+  'id',
+  'name',
+  'position',
+  'image_url',
+  'order_position',
+  'created_at'
+]

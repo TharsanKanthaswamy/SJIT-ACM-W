@@ -1,0 +1,27 @@
+﻿[dotenv@17.3.1] injecting env (4) from .env -- tip: ≡ƒöÉ prevent committing .env to code: https://dotenvx.com/precommit
+Seeding placeholder events to Supabase...
+node.exe : Seeding failed: 
+{
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (See  
+  ding failed: {:String)   
+  [], RemoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find 
+the 'eventDate' column of 
+'events' in the schema 
+cache"
+}
