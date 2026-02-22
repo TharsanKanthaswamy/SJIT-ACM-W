@@ -1,40 +1,33 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { useToast } from '@/hooks/use-toast'
+import { loginAdmin } from '@/app/actions'
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const router = useRouter()
     const { toast } = useToast()
-    const supabase = createClient()
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault()
+    const handleLogin = async (formData: FormData) => {
         setLoading(true)
 
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        })
+        const result = await loginAdmin(formData)
 
-        if (error) {
+        if (result?.error) {
             toast({
                 title: "Login Failed",
-                description: error.message,
+                description: result.error,
                 variant: "destructive",
             })
             setLoading(false)
         } else {
-            router.push('/admin/updates')
+            router.push('/admin/events')
             router.refresh()
         }
     }
@@ -48,16 +41,15 @@ export default function LoginPage() {
                         Enter your credentials to access the dashboard
                     </CardDescription>
                 </CardHeader>
-                <form onSubmit={handleLogin}>
+                <form action={handleLogin}>
                     <CardContent className="space-y-6">
                         <div className="space-y-2">
                             <Label htmlFor="email" className="font-bold text-[#1B3C53]">Email</Label>
                             <Input
                                 id="email"
+                                name="email"
                                 type="email"
                                 placeholder="admin@example.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
                                 required
                                 className="p-6"
                             />
@@ -66,9 +58,8 @@ export default function LoginPage() {
                             <Label htmlFor="password" className="font-bold text-[#1B3C53]">Password</Label>
                             <Input
                                 id="password"
+                                name="password"
                                 type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
                                 required
                                 className="p-6"
                             />
