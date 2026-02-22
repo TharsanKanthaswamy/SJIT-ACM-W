@@ -8,6 +8,7 @@ interface TeamMemberCardProps {
         id: string;
         name: string;
         position: string;
+        image_url?: string | null;
         imageUrl?: string | null;
     };
     index: number;
@@ -27,9 +28,9 @@ export function TeamMemberCard({ member, index }: TeamMemberCardProps) {
                 <div className="absolute inset-0 bg-[#D2C1B6]/20 rounded-full blur-xl scale-0 group-hover:scale-150 transition-transform duration-500" />
 
                 <div className="relative w-full h-full rounded-full overflow-hidden shadow-soft-lg border-4 border-white z-10">
-                    {member.imageUrl ? (
+                    {member.image_url || member.imageUrl ? (
                         <Image
-                            src={member.imageUrl}
+                            src={(member.image_url || member.imageUrl)!}
                             alt={member.name}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"

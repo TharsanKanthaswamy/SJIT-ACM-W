@@ -10,6 +10,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2 } from 'lucide-react'
+import { submitContactForm } from '@/app/actions'
 
 const contactSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,18 +28,23 @@ export function ContactForm() {
         resolver: zodResolver(contactSchema)
     })
 
-    // Simulated submission since DB schema wasn't specified for messages in this architecture run
     const onSubmit = async (data: ContactFormValues) => {
         setIsPending(true)
         try {
-            // Simulate network
-            await new Promise(resolve => setTimeout(resolve, 1500))
-            console.log('Sending message:', data)
-            toast({
-                title: "Message Sent!",
-                description: "Thank you for reaching out. We will get back to you soon.",
-            })
-            reset()
+            const result = await submitContactForm(data)
+            if (result.error) {
+                toast({
+                    title: "Error",
+                    description: result.error,
+                    variant: "destructive"
+                })
+            } else {
+                toast({
+                    title: "Message Sent!",
+                    description: "Thank you for reaching out. We will get back to you soon.",
+                })
+                reset()
+            }
         } catch {
             toast({
                 title: "Error",
@@ -99,3 +105,4 @@ export function ContactForm() {
         </motion.form>
     )
 }
+
