@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ImageGallery } from '@/components/ImageGallery'
 
 export const revalidate = 60
 
@@ -83,13 +84,11 @@ export default async function EventDetail({ params }: { params: { id: string } }
 
                     <div>
                         <h3 className="text-2xl font-bold text-[#1B3C53] mb-6 border-b pb-2">Event Gallery</h3>
-                        {event.images && event.images.length > 0 && (
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                {event.images.map((imgUrl: string, idx: number) => (
-                                    <div key={idx} className="relative h-40 md:h-48 rounded-xl overflow-hidden shadow-sm group">
-                                        <Image src={imgUrl} alt={`${event.title} gallery image ${idx}`} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                                    </div>
-                                ))}
+                        {event.images && event.images.length > 0 ? (
+                            <ImageGallery images={event.images} title={event.title} />
+                        ) : (
+                            <div className="text-center py-8 bg-gray-50 rounded-xl border border-gray-100">
+                                <p className="text-gray-500 italic">No images available for this event yet.</p>
                             </div>
                         )}
                     </div>

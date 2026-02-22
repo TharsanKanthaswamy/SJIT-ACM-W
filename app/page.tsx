@@ -41,24 +41,24 @@ export default async function Home() {
       {/* 1. Hero Section */}
       <section className="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-gradient-to-br from-[#1B3C53] via-[#2D5A7B] to-[#4A728E]">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-        {/* Decorative circle matching the screenshot */}
-        <div className="absolute top-24 right-4 md:top-32 md:right-32 w-28 h-28 md:w-40 md:h-40 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 shadow-soft-xl overflow-hidden p-3 md:p-4 hover:scale-105 transition-transform duration-500">
+        {/* Floating Logos */}
+        <div className="absolute top-24 -right-2 md:top-32 md:right-4 lg:right-12 xl:right-24 w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 flex items-center justify-center p-2 hover:scale-105 transition-transform duration-500">
           <Image
             src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp"
             alt="ACM-W Logo"
-            width={120}
-            height={120}
-            className="object-contain w-full h-full"
+            width={240}
+            height={240}
+            className="object-contain w-full h-full drop-shadow-2xl"
             priority
           />
         </div>
-        <div className="absolute top-24 left-4 md:top-32 md:left-32 w-28 h-28 md:w-40 md:h-40 bg-[#1B3C53]/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/5 shadow-soft-xl overflow-hidden p-3 md:p-4 hover:scale-105 transition-transform duration-500">
+        <div className="absolute top-24 -left-2 md:top-32 md:left-4 lg:left-12 xl:left-24 w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 flex items-center justify-center p-2 hover:scale-105 transition-transform duration-500">
           <Image
             src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/SJIT_logo.webp"
             alt="SJIT Logo"
-            width={120}
-            height={120}
-            className="object-contain w-full h-full"
+            width={200}
+            height={200}
+            className="object-contain w-full h-full drop-shadow-2xl"
           />
         </div>
 
@@ -181,8 +181,13 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-soft-xl group">
-              <div className="absolute inset-0 bg-[#D2C1B6] flex items-center justify-center">
-                <Globe2 size={80} className="text-white/50" />
+              <div className="absolute inset-0 bg-[#D2C1B6]/10 flex items-center justify-center">
+                <Image
+                  src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/Legacy.webp"
+                  alt="A Legacy of Innovation"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </div>
 
@@ -277,7 +282,18 @@ export default async function Home() {
 
       {/* Footer */}
       <footer className="bg-[#151D23] text-gray-400 py-12 text-center">
-        <p>© {new Date().getFullYear()} St. Joseph&apos;s Institute of Technology ACM-W Student Chapter. All rights reserved.</p>
+        <p className="mb-2">© 2026 ACM-W Student Chapter, SJIT.</p>
+        <p>
+          Website developed by{' '}
+          <a
+            href="https://www.linkedin.com/in/tharsan-kanthaswamy-b06b63297/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-blue-400 transition-colors underline decoration-white/30 underline-offset-4 font-medium"
+          >
+            Tharsan Kanthaswamy
+          </a>.
+        </p>
       </footer>
     </div>
   )
