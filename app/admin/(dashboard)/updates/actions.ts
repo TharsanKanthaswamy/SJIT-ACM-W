@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { revalidatePath } from 'next/cache'
 
 export async function createUpdate(formData: FormData) {
@@ -32,7 +33,8 @@ export async function createUpdate(formData: FormData) {
         const fileExt = file.name.split('.').pop()
         const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
 
-        const { error } = await supabase.storage
+        const adminClient = createAdminClient()
+        const { error } = await adminClient.storage
             .from('updates-images')
             .upload(fileName, file)
 
@@ -40,7 +42,7 @@ export async function createUpdate(formData: FormData) {
             return { error: `Upload failed: ${error.message}` }
         }
 
-        const { data: publicUrlData } = supabase.storage
+        const { data: publicUrlData } = adminClient.storage
             .from('updates-images')
             .getPublicUrl(fileName)
 
@@ -83,13 +85,14 @@ export async function updateUpdate(id: string, formData: FormData) {
         const fileExt = file.name.split('.').pop()
         const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
 
-        const { error: uploadError } = await supabase.storage
+        const adminClient = createAdminClient()
+        const { error: uploadError } = await adminClient.storage
             .from('updates-images')
             .upload(fileName, file)
 
         if (uploadError) return { error: `Upload failed: ${uploadError.message}` }
 
-        const { data: publicUrlData } = supabase.storage
+        const { data: publicUrlData } = adminClient.storage
             .from('updates-images')
             .getPublicUrl(fileName)
 

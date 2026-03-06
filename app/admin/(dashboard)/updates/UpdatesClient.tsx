@@ -149,7 +149,7 @@ export function UpdatesClient({ initialUpdates }: { initialUpdates: any[] }) {
                             {initialUpdates.map(u => (
                                 <tr key={u.id}>
                                     <td className="px-6 py-4 font-semibold text-[#1B3C53]">{u.title}</td>
-                                    <td className="px-6 py-4 text-gray-500">{new Date(u.date).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4 text-gray-500">{new Date(u.date).toLocaleDateString('en-US')}</td>
                                     <td className="px-6 py-4 text-center">
                                         <span className={`px-2 py-1 text-xs rounded-full ${u.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                                             {u.published ? 'Published' : 'Draft'}

@@ -5,9 +5,9 @@ export default async function TeamAdminPage() {
     const supabase = await createClient()
 
     const { data: team } = await supabase
-        .from('teamMembers')
+        .from('team_members')
         .select('*')
-        .order('orderPosition', { ascending: true })
+        .order('order_position', { ascending: true })
 
     return <TeamClient initialTeam={team || []} />
 }

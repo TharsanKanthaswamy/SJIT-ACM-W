@@ -43,14 +43,22 @@ export default async function EventDetail({ params }: { params: { id: string } }
                         <div className="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100">
                             <p className="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">Date</p>
                             <p className="text-[#1B3C53] font-semibold">
-                                {new Date(event.event_date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                                {new Date(event.event_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </p>
                         </div>
 
                         {event.registration_open && (
                             <div className="bg-green-50 px-4 py-2 rounded-lg border border-green-100">
                                 <p className="text-xs text-green-600 uppercase tracking-wider font-bold mb-1">Status</p>
-                                <p className="text-green-800 font-semibold">Registration Open</p>
+                                {event.registration_link ? (
+                                    <p className="text-green-800 font-semibold underline hover:text-green-900">
+                                        <a href={event.registration_link} target="_blank" rel="noopener noreferrer">
+                                            Registration Open - Click Here
+                                        </a>
+                                    </p>
+                                ) : (
+                                    <p className="text-green-800 font-semibold">Registration Open</p>
+                                )}
                             </div>
                         )}
 
@@ -58,7 +66,7 @@ export default async function EventDetail({ params }: { params: { id: string } }
                             <div className="bg-blue-50 px-4 py-2 rounded-lg border border-blue-100">
                                 <p className="text-xs text-blue-600 uppercase tracking-wider font-bold mb-1">Deadline</p>
                                 <p className="text-blue-800 font-semibold">
-                                    {new Date(event.registration_date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    {new Date(event.registration_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                                 </p>
                             </div>
                         )}

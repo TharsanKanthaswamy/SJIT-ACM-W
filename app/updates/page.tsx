@@ -80,7 +80,7 @@ export default async function UpdatesPage() {
                                             <line x1="3" y1="10" x2="21" y2="10" />
                                         </svg>
                                         <p className="text-sm font-medium text-gray-500">
-                                            {new Date(update.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
+                                            {new Date(update.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                                         </p>
                                     </div>
 

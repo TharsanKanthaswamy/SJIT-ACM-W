@@ -1,7 +1,17 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { revalidatePath } from 'next/cache'
+
+function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-')
+}
 
 export async function createEvent(formData: FormData) {
     const supabase = await createClient()
@@ -14,6 +24,7 @@ export async function createEvent(formData: FormData) {
     const registrationOpen = formData.get('registrationOpen') === 'true'
     const registrationDateStr = formData.get('registrationDate') as string
     const registrationDate = registrationDateStr ? new Date(registrationDateStr).toISOString() : null
+    const registrationLink = formData.get('registrationLink') as string | null
     const published = formData.get('published') === 'true'
 
     // Single image upload for now to match other pages, but the schema supports an array `images`
@@ -27,16 +38,18 @@ export async function createEvent(formData: FormData) {
         if (file.size > 5 * 1024 * 1024) return { error: 'File size exceeds 5MB limit.' }
 
         const fileExt = file.name.split('.').pop()
-        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+        const eventSlug = slugify(title)
+        const fileName = `${eventSlug}/${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
 
-        const { error: uploadError } = await supabase.storage
-            .from('events-images')
+        const adminClient = createAdminClient()
+        const { error: uploadError } = await adminClient.storage
+            .from('event-images')
             .upload(fileName, file)
 
         if (uploadError) return { error: `Upload failed: ${uploadError.message}` }
 
-        const { data: publicUrlData } = supabase.storage
-            .from('events-images')
+        const { data: publicUrlData } = adminClient.storage
+            .from('event-images')
             .getPublicUrl(fileName)
 
         images.push(publicUrlData.publicUrl)
@@ -44,7 +57,7 @@ export async function createEvent(formData: FormData) {
 
     const { error } = await supabase
         .from('events')
-        .insert([{ title, eventDate, shortDescription, fullSummary, registrationOpen, registrationDate, published, images }])
+        .insert([{ title, event_date: eventDate, short_description: shortDescription, full_summary: fullSummary, registration_open: registrationOpen, registration_date: registrationDate, registration_link: registrationLink, published, images }])
 
     if (error) return { error: error.message }
 
@@ -64,6 +77,7 @@ export async function updateEvent(id: string, formData: FormData) {
     const registrationOpen = formData.get('registrationOpen') === 'true'
     const registrationDateStr = formData.get('registrationDate') as string
     const registrationDate = registrationDateStr ? new Date(registrationDateStr).toISOString() : null
+    const registrationLink = formData.get('registrationLink') as string | null
     const published = formData.get('published') === 'true'
 
     const file = formData.get('image') as File | null
@@ -77,16 +91,18 @@ export async function updateEvent(id: string, formData: FormData) {
         if (file.size > 5 * 1024 * 1024) return { error: 'File size exceeds 5MB' }
 
         const fileExt = file.name.split('.').pop()
-        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+        const eventSlug = slugify(title)
+        const fileName = `${eventSlug}/${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
 
-        const { error: uploadError } = await supabase.storage
-            .from('events-images')
+        const adminClient = createAdminClient()
+        const { error: uploadError } = await adminClient.storage
+            .from('event-images')
             .upload(fileName, file)
 
         if (uploadError) return { error: `Upload failed: ${uploadError.message}` }
 
-        const { data: publicUrlData } = supabase.storage
-            .from('events-images')
+        const { data: publicUrlData } = adminClient.storage
+            .from('event-images')
             .getPublicUrl(fileName)
 
         images = [publicUrlData.publicUrl]
@@ -94,7 +110,7 @@ export async function updateEvent(id: string, formData: FormData) {
 
     const { error } = await supabase
         .from('events')
-        .update({ title, eventDate, shortDescription, fullSummary, registrationOpen, registrationDate, published, images })
+        .update({ title, event_date: eventDate, short_description: shortDescription, full_summary: fullSummary, registration_open: registrationOpen, registration_date: registrationDate, registration_link: registrationLink, published, images })
         .eq('id', id)
 
     if (error) return { error: error.message }

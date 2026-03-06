@@ -7,7 +7,7 @@ export default async function EventsAdminPage() {
     const { data: events } = await supabase
         .from('events')
         .select('*')
-        .order('eventDate', { ascending: false })
+        .order('event_date', { ascending: false })
 
     return <EventsClient initialEvents={events || []} />
 }

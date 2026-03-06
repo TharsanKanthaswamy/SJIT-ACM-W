@@ -19,14 +19,18 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
     // Form states
     const [name, setName] = useState('')
     const [position, setPosition] = useState('')
+    const [category, setCategory] = useState('student')
     const [orderPosition, setOrderPosition] = useState('')
+    const [linkedinUrl, setLinkedinUrl] = useState('')
     const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null)
 
     const handleOpenCreate = () => {
         setEditingId(null)
         setName('')
         setPosition('')
+        setCategory('student')
         setOrderPosition('')
+        setLinkedinUrl('')
         setExistingImageUrl(null)
         setIsFormOpen(true)
     }
@@ -36,8 +40,10 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
         setEditingId(member.id)
         setName(member.name || '')
         setPosition(member.position || '')
-        setOrderPosition(member.orderPosition?.toString() || '')
-        setExistingImageUrl(member.imageUrl)
+        setCategory(member.category || 'student')
+        setOrderPosition(member.order_position?.toString() || '')
+        setLinkedinUrl(member.linkedin_url || '')
+        setExistingImageUrl(member.image_url)
         setIsFormOpen(true)
     }
 
@@ -46,6 +52,8 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
         if (existingImageUrl) {
             formData.append('existingImageUrl', existingImageUrl)
         }
+        formData.append('linkedinUrl', linkedinUrl)
+        formData.append('category', category)
 
         const res = editingId
             ? await updateTeamMember(editingId, formData)
@@ -94,6 +102,19 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
                         </div>
 
                         <div>
+                            <Label>Category</Label>
+                            <select
+                                name="category"
+                                value={category}
+                                onChange={e => setCategory(e.target.value)}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            >
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty</option>
+                            </select>
+                        </div>
+
+                        <div>
                             <Label>Order Position</Label>
                             <Input type="number" name="orderPosition" value={orderPosition} onChange={e => setOrderPosition(e.target.value)} placeholder="Lower numbers appear first" />
                         </div>
@@ -109,6 +130,11 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
                                     </div>
                                 </div>
                             )}
+                        </div>
+
+                        <div>
+                            <Label>LinkedIn URL</Label>
+                            <Input type="url" name="linkedinUrl" value={linkedinUrl} onChange={e => setLinkedinUrl(e.target.value)} placeholder="https://www.linkedin.com/in/..." />
                         </div>
 
                         <div className="flex justify-end gap-2 pt-4">
@@ -135,9 +161,9 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
                                 <tr key={t.id}>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
-                                            {t.imageUrl ? (
+                                            {t.image_url ? (
                                                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                                                    <Image src={t.imageUrl} alt={t.name} fill className="object-cover" />
+                                                    <Image src={t.image_url} alt={t.name} fill className="object-cover" />
                                                 </div>
                                             ) : (
                                                 <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-500">
@@ -148,7 +174,7 @@ export function TeamClient({ initialTeam }: { initialTeam: any[] }) {
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-gray-500">{t.position}</td>
-                                    <td className="px-6 py-4 text-center font-medium">{t.orderPosition ?? '-'}</td>
+                                    <td className="px-6 py-4 text-center font-medium">{t.order_position ?? '-'}</td>
                                     <td className="px-6 py-4 text-right space-x-2">
                                         <Button variant="outline" size="sm" onClick={() => handleOpenEdit(t)}>Edit</Button>
                                         <Button variant="destructive" size="sm" onClick={() => handleDelete(t.id, t.name)}>Delete</Button>

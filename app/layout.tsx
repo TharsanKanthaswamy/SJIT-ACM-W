@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Outfit, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import Link from 'next/link'
 import Image from 'next/image'
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
   display: 'swap',
 })
 
@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'St. Joseph\'s ACM-W Student Chapter',
+  title: 'AIDS SJIT ACM-W',
   description: 'Empowering Women in Computing at St. Joseph\'s Institute of Technology',
 }
 
@@ -29,29 +29,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+      <body className={`${outfit.variable} ${playfair.variable} font-sans`}>
         <nav className="fixed top-0 w-full z-50 bg-[#1B3C53]/90 backdrop-blur-md border-b border-white/10 text-white">
           <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-4">
               <Image
                 src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp"
                 alt="ACM-W Logo"
-                width={70}
-                height={70}
-                className="object-contain h-12 w-auto"
+                width={120}
+                height={120}
+                className="object-contain h-[5rem] w-auto"
                 priority
               />
-              <span className="text-sm font-light text-blue-100 hidden sm:inline-block ml-2">St. Joseph&apos;s Institute of Technology</span>
+              <span className="text-lg font-bold text-white hidden sm:inline-block ml-2 tracking-wide">AIDS SJIT ACM-W</span>
             </Link>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <div className="hidden md:flex items-center gap-8 text-base font-semibold">
               <Link href="/#about" className="hover:text-[#D2C1B6] transition-colors">About</Link>
               <Link href="/events" className="hover:text-[#D2C1B6] transition-colors">Events</Link>
               <Link href="/team" className="hover:text-[#D2C1B6] transition-colors">Team</Link>
               <Link href="/updates" className="hover:text-[#D2C1B6] transition-colors">Updates</Link>
               <Link href="/#contact" className="hover:text-[#D2C1B6] transition-colors">Contact</Link>
-              <button className="px-6 py-2 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
+              <a href="https://services.acm.org/public/qj/proflevel/proflevel_control.cfm?level=3&country=India&form_type=Student&promo=ACMMSDEPT&pay=DD" target="_blank" rel="noopener noreferrer" className="px-8 py-2.5 text-lg border-2 border-white/20 rounded-full hover:bg-white/10 hover:border-white/40 transition-all">
                 Join Us
-              </button>
+              </a>
             </div>
           </div>
         </nav>

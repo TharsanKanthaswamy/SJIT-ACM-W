@@ -34,7 +34,7 @@ export default async function UpdateDetail({ params }: { params: { id: string } 
 
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
                     <p className="text-[#456882] font-bold mb-4 uppercase tracking-wider text-sm">
-                        {new Date(update.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                        {new Date(update.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </p>
 
                     <h1 className="text-4xl md:text-5xl font-extrabold text-[#1B3C53] mb-6">

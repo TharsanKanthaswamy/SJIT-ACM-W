@@ -24,6 +24,7 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
     const [fullSummary, setFullSummary] = useState('')
     const [registrationOpen, setRegistrationOpen] = useState(false)
     const [registrationDate, setRegistrationDate] = useState('')
+    const [registrationLink, setRegistrationLink] = useState('')
     const [published, setPublished] = useState(false)
     const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null)
 
@@ -35,6 +36,7 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
         setFullSummary('')
         setRegistrationOpen(false)
         setRegistrationDate('')
+        setRegistrationLink('')
         setPublished(false)
         setExistingImageUrl(null)
         setIsFormOpen(true)
@@ -44,11 +46,12 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
     const handleOpenEdit = (event: any) => {
         setEditingId(event.id)
         setTitle(event.title || '')
-        setEventDate(event.eventDate ? new Date(event.eventDate).toISOString().split('T')[0] : '')
-        setShortDescription(event.shortDescription || '')
-        setFullSummary(event.fullSummary || '')
-        setRegistrationOpen(event.registrationOpen || false)
-        setRegistrationDate(event.registrationDate ? new Date(event.registrationDate).toISOString().split('T')[0] : '')
+        setEventDate(event.event_date ? new Date(event.event_date).toISOString().split('T')[0] : '')
+        setShortDescription(event.short_description || '')
+        setFullSummary(event.full_summary || '')
+        setRegistrationOpen(event.registration_open || false)
+        setRegistrationDate(event.registration_date ? new Date(event.registration_date).toISOString().split('T')[0] : '')
+        setRegistrationLink(event.registration_link || '')
         setPublished(event.published || false)
         setExistingImageUrl(event.images && event.images.length > 0 ? event.images[0] : null)
         setIsFormOpen(true)
@@ -57,6 +60,7 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
     const handleSubmit = async (formData: FormData) => {
         setIsLoading(true)
         formData.append('registrationOpen', registrationOpen.toString())
+        formData.append('registrationLink', registrationLink)
         formData.append('published', published.toString())
         if (existingImageUrl) {
             formData.append('existingImageUrl', existingImageUrl)
@@ -129,6 +133,13 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
                             </div>
                         </div>
 
+                        {registrationOpen && (
+                            <div>
+                                <Label>Registration Link</Label>
+                                <Input type="url" name="registrationLink" value={registrationLink} onChange={e => setRegistrationLink(e.target.value)} placeholder="https://forms.gle/..." required />
+                            </div>
+                        )}
+
                         <div>
                             <Label>Short Description</Label>
                             <Textarea name="shortDescription" value={shortDescription} onChange={e => setShortDescription(e.target.value)} required />
@@ -175,7 +186,7 @@ export function EventsClient({ initialEvents }: { initialEvents: any[] }) {
                             {initialEvents.map(e => (
                                 <tr key={e.id}>
                                     <td className="px-6 py-4 font-semibold text-[#1B3C53] max-w-xs truncate">{e.title}</td>
-                                    <td className="px-6 py-4 text-gray-500">{new Date(e.eventDate).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4 text-gray-500">{new Date(e.event_date).toLocaleDateString('en-US')}</td>
                                     <td className="px-6 py-4 text-center">
                                         <span className={`px-2 py-1 text-xs rounded-full ${e.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                                             {e.published ? 'Published' : 'Draft'}
