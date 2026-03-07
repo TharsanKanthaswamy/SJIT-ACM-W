@@ -6,7 +6,7 @@ import { EventCard } from '@/components/EventCard'
 import { TeamMemberCard } from '@/components/TeamMemberCard'
 import { ContactForm } from '@/components/ContactForm'
 import { ScrollReveal } from '@/components/ScrollReveal'
-import { Users, Code2, Globe2, Lightbulb, ArrowRight } from 'lucide-react'
+import { Users, Code2, Lightbulb, ArrowRight } from 'lucide-react'
 
 export const revalidate = 60; // statically cache this page but refresh every 60s
 

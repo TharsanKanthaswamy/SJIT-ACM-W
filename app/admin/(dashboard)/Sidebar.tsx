@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { CalendarDays, Users, Rss, LayoutDashboard, LogOut } from 'lucide-react'
+import Image from 'next/image'
+import { CalendarDays, Users, Rss, LogOut } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
@@ -28,7 +29,9 @@ export function DashboardSidebar({ email }: { email?: string }) {
         <aside className="w-full md:w-64 bg-[#1B3C53] text-white flex flex-col h-full border-r border-[#153043]">
             <div className="p-6 border-b border-white/10 flex flex-col gap-1">
                 <div className="flex items-center gap-3">
-                    <img src="/logo.webp" alt="ACM-W Logo" className="h-8 w-8 rounded-full bg-white object-contain" />
+                    <div className="relative h-8 w-8 rounded-full bg-white overflow-hidden">
+                        <Image src="/logo.webp" alt="ACM-W Logo" fill className="object-contain" sizes="32px" />
+                    </div>
                     <span className="font-extrabold text-xl tracking-wide">Admin</span>
                 </div>
                 {email && <p className="text-xs text-white/50 mt-2 truncate w-full" title={email}>{email}</p>}
