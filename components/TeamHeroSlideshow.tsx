@@ -15,13 +15,6 @@ interface TeamHeroSlideshowProps {
     members: Member[]
 }
 
-const HOD_SLIDE = {
-    id: 'hod-priscilla',
-    name: 'Dr. R. Priscilla',
-    position: 'Head of Department — AI & Data Science',
-    image_url: 'https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/HOD.webp?v=1',
-}
-
 export function TeamHeroSlideshow({ members }: TeamHeroSlideshowProps) {
     const [currentPage, setCurrentPage] = useState(0)
     const [isPaused, setIsPaused] = useState(false)
@@ -29,16 +22,13 @@ export function TeamHeroSlideshow({ members }: TeamHeroSlideshowProps) {
     // Only show members with images
     const membersWithImages = members.filter(m => m.image_url)
 
-    // Build slides: first slide is HOD solo, then groups of 3
-    type Slide = { members: Member[]; isHOD: boolean }
+    // Build slides: groups of 3
+    type Slide = { members: Member[] }
     const slides: Slide[] = []
-
-    // First slide: HOD alone
-    slides.push({ members: [HOD_SLIDE], isHOD: true })
 
     // Remaining slides: groups of 3
     for (let i = 0; i < membersWithImages.length; i += 3) {
-        slides.push({ members: membersWithImages.slice(i, i + 3), isHOD: false })
+        slides.push({ members: membersWithImages.slice(i, i + 3) })
     }
 
     const totalPages = slides.length
@@ -94,50 +84,28 @@ export function TeamHeroSlideshow({ members }: TeamHeroSlideshowProps) {
                                 pointerEvents: pageIndex === currentPage ? 'auto' : 'none',
                             }}
                         >
-                            {slide.isHOD ? (
-                                /* HOD special solo slide — centered, larger card */
-                                <div className="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl group">
+                            {slide.members.map((member) => (
+                                <div
+                                    key={member.id}
+                                    className="relative flex-1 max-w-[280px] rounded-2xl overflow-hidden shadow-xl group"
+                                >
                                     <Image
-                                        src={slide.members[0].image_url!}
-                                        alt={slide.members[0].name}
+                                        src={member.image_url!}
+                                        alt={member.name}
                                         fill
                                         className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                    <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
-                                        <p className="text-white font-bold text-lg md:text-xl leading-tight drop-shadow-md">
-                                            {slide.members[0].name}
+                                    <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
+                                        <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-md">
+                                            {member.name}
                                         </p>
-                                        <p className="text-blue-200 text-sm md:text-base font-light mt-1">
-                                            {slide.members[0].position}
+                                        <p className="text-blue-200 text-xs md:text-sm font-light mt-1">
+                                            {member.position}
                                         </p>
                                     </div>
                                 </div>
-                            ) : (
-                                /* Regular 3-member slide */
-                                slide.members.map((member) => (
-                                    <div
-                                        key={member.id}
-                                        className="relative flex-1 max-w-[280px] rounded-2xl overflow-hidden shadow-xl group"
-                                    >
-                                        <Image
-                                            src={member.image_url!}
-                                            alt={member.name}
-                                            fill
-                                            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                        <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                                            <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-md">
-                                                {member.name}
-                                            </p>
-                                            <p className="text-blue-200 text-xs md:text-sm font-light mt-1">
-                                                {member.position}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))
-                            )}
+                            ))}
                         </div>
                     ))}
                 </div>
