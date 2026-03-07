@@ -4,6 +4,7 @@ import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import Link from 'next/link'
 import Image from 'next/image'
+import { MobileNav } from '@/components/MobileNav'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -53,6 +54,8 @@ export default function RootLayout({
                 Join Us
               </a>
             </div>
+            {/* Mobile Navigation */}
+            <MobileNav />
           </div>
         </nav>
         <main className="min-h-screen">

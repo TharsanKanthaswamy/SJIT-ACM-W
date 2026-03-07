@@ -53,8 +53,8 @@ export default async function Home() {
         {/* Slight dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/30 z-[1]"></div>
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay z-[2]"></div>
-        {/* Floating Logos */}
-        <div className="absolute top-24 -right-2 md:top-32 md:right-4 lg:right-12 xl:right-24 w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 flex items-center justify-center p-2 hover:scale-105 transition-transform duration-500 z-[3]">
+        {/* Floating Logos - Hidden on mobile to prevent text overlap */}
+        <div className="hidden md:flex absolute top-24 -right-2 md:top-32 md:right-4 lg:right-12 xl:right-24 w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 items-center justify-center p-2 hover:scale-105 transition-transform duration-500 z-[3]">
           <Image
             src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp"
             alt="ACM-W Logo"
@@ -64,7 +64,7 @@ export default async function Home() {
             priority
           />
         </div>
-        <div className="absolute top-24 -left-2 md:top-32 md:left-4 lg:left-12 xl:left-24 w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 flex items-center justify-center p-2 hover:scale-105 transition-transform duration-500 z-[3]">
+        <div className="hidden md:flex absolute top-24 -left-2 md:top-32 md:left-4 lg:left-12 xl:left-24 w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 items-center justify-center p-2 hover:scale-105 transition-transform duration-500 z-[3]">
           <Image
             src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/SJIT_logo.webp"
             alt="SJIT Logo"
