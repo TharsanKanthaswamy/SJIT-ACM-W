@@ -17,7 +17,7 @@ export default async function UpdatesPage() {
     return (
         <div className="min-h-screen bg-[#F8F7F6]">
             {/* Hero Banner */}
-            <section className="bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#456882] py-32 px-6 text-center relative overflow-hidden">
+            <section className="bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#456882] pt-36 pb-20 px-6 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-7xl font-extrabold font-serif text-white tracking-tight mb-6">

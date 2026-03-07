@@ -28,7 +28,6 @@ export function EventsFilter({ events }: { events: Event[] }) {
     const tabs: { label: string; value: FilterType }[] = [
         { label: 'All Events', value: 'all' },
         { label: 'Upcoming', value: 'upcoming' },
-        { label: 'Past', value: 'past' },
     ]
 
     return (

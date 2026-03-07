@@ -1,0 +1,25 @@
+=== ALL TOP-LEVEL ITEMS ===
+  ai-unplugged (folder)
+  code-herofest (folder)
+  inaugration (folder)
+  intellecta (folder)
+  unglitch (folder)
+  virtual-csi (folder)
+
+--- ai-unplugged-online-expert-talk ---
+  (empty or not found)
+
+--- code-herofest ---
+  FILE: .emptyFolderPlaceholder
+
+--- inauguration-of-acm-womens-chapter ---
+  (empty or not found)
+
+--- tech-csi-virtual-cyber-investigation-challenge ---
+  (empty or not found)
+
+--- intellecta-aptitude-logical-reasoning-challenge ---
+  (empty or not found)
+
+--- un-glitch26-ai-systems-vulnerability-ethics-challenge ---
+  (empty or not found)

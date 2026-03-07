@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'AIDS SJIT ACM-W',
+  title: 'ADS SJIT ACM-W',
   description: 'Empowering Women in Computing at St. Joseph\'s Institute of Technology',
 }
 
@@ -31,17 +31,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} ${playfair.variable} font-sans`}>
         <nav className="fixed top-0 w-full z-50 bg-[#1B3C53]/90 backdrop-blur-md border-b border-white/10 text-white">
-          <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+          <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-4">
               <Image
                 src="https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp"
                 alt="ACM-W Logo"
-                width={120}
-                height={120}
-                className="object-contain h-[5rem] w-auto"
+                width={150}
+                height={150}
+                className="object-contain h-[7rem] w-auto -ml-2"
                 priority
               />
-              <span className="text-lg font-bold text-white hidden sm:inline-block ml-2 tracking-wide">AIDS SJIT ACM-W</span>
+              <span className="text-xl font-bold text-white hidden sm:inline-block ml-2 tracking-wide">ADS SJIT ACM-W</span>
             </Link>
             <div className="hidden md:flex items-center gap-8 text-base font-semibold">
               <Link href="/#about" className="hover:text-[#D2C1B6] transition-colors">About</Link>

@@ -1,0 +1,6 @@
+✓ Inauguration of ACM Women's Chapter: 12 images (folder: inaugration)
+EMPTY: Code HeroFest (folder: code-herofest)
+EMPTY: AI Unplugged — Online Expert Talk (folder: ai-unplugged)
+✓ Un-Glitch'26 — AI Systems Vulnerability & Ethics Challenge: 1 images (folder: unglitch)
+✓ Tech-CSI — Virtual Cyber Investigation Challenge: 18 images (folder: virtual-csi)
+✓ Intellecta — Aptitude & Logical Reasoning Challenge: 18 images (folder: intellecta)

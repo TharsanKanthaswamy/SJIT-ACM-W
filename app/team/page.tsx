@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { TeamMemberCard } from '@/components/TeamMemberCard'
+import { TeamHeroSlideshow } from '@/components/TeamHeroSlideshow'
 import { SectionHeading } from '@/components/SectionHeading'
 import Link from 'next/link'
 
@@ -19,23 +20,8 @@ export default async function TeamPage() {
 
     return (
         <div className="min-h-screen bg-[#F8F7F6]">
-            {/* Hero Banner */}
-            <section className="bg-gradient-to-br from-[#1B3C53] via-[#234C6A] to-[#456882] py-32 px-6 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-                <div className="relative z-10 max-w-4xl mx-auto">
-                    <h1 className="text-5xl md:text-7xl font-extrabold font-serif text-white tracking-tight mb-6">
-                        Our Team
-                    </h1>
-                    <p className="text-xl text-blue-100 font-light max-w-2xl mx-auto">
-                        Meet the dedicated faculty and students driving the ACM-W mission forward.
-                    </p>
-                    <div className="flex justify-center items-center gap-2 mt-8">
-                        <div className="h-1 w-12 rounded-full bg-white/30" />
-                        <div className="h-1.5 w-16 rounded-full bg-white" />
-                        <div className="h-1 w-12 rounded-full bg-white/30" />
-                    </div>
-                </div>
-            </section>
+            {/* Hero Banner with Team Slideshow */}
+            <TeamHeroSlideshow members={teamMembers || []} />
 
             {/* Faculty Leadership */}
             {faculty.length > 0 && (

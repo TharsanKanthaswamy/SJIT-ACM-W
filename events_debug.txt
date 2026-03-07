@@ -1,0 +1,47 @@
+=== EVENTS ===
+ID: 0e34e2a2-08c4-4fd0-9d34-aba609ee894f
+Title: Inauguration of ACM Women's Chapter
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/inauguration/cover.webp"]
+
+ID: 1ccb762b-201f-40ef-98fd-63c79b8a6ff0
+Title: Code HeroFest
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/code-herofest/cover.webp"]
+
+ID: d9419dc5-d7c4-4530-9d89-4aa307b0d8aa
+Title: AI Unplugged — Online Expert Talk
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/ai-unplugged/cover.webp"]
+
+ID: 4eed823d-061a-4e70-a70f-0ce8b7c2187f
+Title: Tech-CSI — Virtual Cyber Investigation Challenge
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/virtual-csi/cover.webp"]
+
+ID: 4da05e13-af33-42ab-8bd9-b642a61b5671
+Title: Intellecta — Aptitude & Logical Reasoning Challenge
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/intellecta/cover.webp"]
+
+ID: 84e85a98-b964-4672-9c5a-d61a48098902
+Title: Un-Glitch'26 — AI Systems Vulnerability & Ethics Challenge
+Images: ["https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/event-images/unglitch/cover.webp"]
+
+=== BUCKET ROOT ===
+  ai-unplugged
+  code-herofest
+  inaugration
+  intellecta
+  unglitch
+  virtual-csi
+
+=== inaugration/ ===
+  cover.webp
+  WhatsApp Image 2026-03-06 at 2.13.02 PM.webp
+  WhatsApp Image 2026-03-06 at 2.13.33 PM.webp
+  WhatsApp Image 2026-03-06 at 2.13.50 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.03 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.15 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.28 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.29 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.30 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.31 PM.webp
+  WhatsApp Image 2026-03-06 at 2.14.32 PM.webp
+
+=== inauguration/ ===

@@ -6,7 +6,7 @@ import { EventCard } from '@/components/EventCard'
 import { TeamMemberCard } from '@/components/TeamMemberCard'
 import { ContactForm } from '@/components/ContactForm'
 import { ScrollReveal } from '@/components/ScrollReveal'
-import { Users, Code2, Globe2, Lightbulb } from 'lucide-react'
+import { Users, Code2, Globe2, Lightbulb, ArrowRight } from 'lucide-react'
 
 export const revalidate = 60; // statically cache this page but refresh every 60s
 
@@ -97,7 +97,7 @@ export default async function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16">
             <Link href="/events" className="w-full sm:w-auto px-10 py-5 bg-white text-[#1B3C53] rounded-[2rem] text-lg font-bold shadow-soft-xl hover:shadow-soft-2xl hover:scale-105 transition-all duration-300">
-              View Upcoming Events
+              Explore Our Events
             </Link>
             <Link href="#about" className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white text-white rounded-[2rem] text-lg font-bold hover:bg-white/10 transition-all duration-300">
               Learn More
@@ -185,6 +185,23 @@ export default async function Home() {
               </p>
             </div>
           </div>
+
+          {/* ACM Benefits CTA */}
+          <div className="mt-16 relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1B3C53] via-[#234C6A] to-[#1B3C53] p-10 md:p-14 text-center shadow-soft-xl">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay" />
+            <div className="relative z-10">
+              <h3 className="text-3xl md:text-4xl font-extrabold font-serif text-white tracking-tight mb-4">
+                Discover ACM Benefits
+              </h3>
+              <p className="text-lg text-blue-100/80 font-light max-w-2xl mx-auto mb-8">
+                Unlock learning resources, career growth, global networking, and exclusive member privileges.
+              </p>
+              <Link href="/acm-benefits" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1B3C53] rounded-2xl text-lg font-bold shadow-soft-xl hover:shadow-soft-2xl hover:scale-105 transition-all duration-300">
+                Explore ACM Membership
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
 
@@ -220,7 +237,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-extrabold font-serif text-[#1B3C53] mb-6">
-              Upcoming Events
+              Events
             </h2>
             <p className="text-xl text-slate-500 font-light max-w-2xl mx-auto">
               Join us for workshops, tech talks, and networking sessions.
@@ -294,7 +311,7 @@ export default async function Home() {
 
       {/* Footer */}
       <footer className="bg-[#151D23] text-gray-400 py-12 text-center">
-        <p className="mb-2">© 2026 AIDS SJIT ACM-W.</p>
+        <p className="mb-2">© 2026 ADS SJIT ACM-W.</p>
         <p>
           Website developed by{' '}
           <a

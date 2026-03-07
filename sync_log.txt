@@ -1,0 +1,39 @@
+Found 6 events and 6 bucket folders
+Bucket folders: ai-unplugged, code-herofest, inaugration, intellecta, unglitch, virtual-csi
+
+--- Code HeroFest ---
+  Slug: code-herofest
+  Folder: code-herofest
+  Found 0 images (was 1)
+  UPDATED ✓
+
+--- Inauguration of ACM Women's Chapter ---
+  Slug: inauguration-of-acm-womens-chapter
+  Folder: inaugration
+  Found 12 images (was 11)
+  UPDATED ✓
+
+--- AI Unplugged — Online Expert Talk ---
+  Slug: ai-unplugged-online-expert-talk
+  Folder: ai-unplugged
+  Found 0 images (was 1)
+  UPDATED ✓
+
+--- Tech-CSI — Virtual Cyber Investigation Challenge ---
+  Slug: tech-csi-virtual-cyber-investigation-challenge
+  Folder: virtual-csi
+  Found 0 images (was 1)
+  UPDATED ✓
+
+--- Intellecta — Aptitude & Logical Reasoning Challenge ---
+  Slug: intellecta-aptitude-logical-reasoning-challenge
+  Folder: intellecta
+  Found 18 images (was 1)
+  UPDATED ✓
+
+--- Un-Glitch'26 — AI Systems Vulnerability & Ethics Challenge ---
+  Slug: un-glitch26-ai-systems-vulnerability-ethics-challenge
+  Folder: unglitch
+  Found 1 images (was 1)
+  UPDATED ✓
+
