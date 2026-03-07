@@ -21,6 +21,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'ADS SJIT ACM-W',
   description: 'Empowering Women in Computing at St. Joseph\'s Institute of Technology',
+  icons: {
+    icon: 'https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp?v=1',
+  },
 }
 
 export default function RootLayout({
