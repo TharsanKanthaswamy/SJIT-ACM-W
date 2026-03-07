@@ -42,7 +42,7 @@ export default function RootLayout({
                 className="object-contain h-[7rem] w-auto -ml-2"
                 priority
               />
-              <span className="text-xl font-bold text-white hidden sm:inline-block ml-2 tracking-wide">ADS SJIT ACM-W</span>
+              <span className="text-lg sm:text-xl font-bold text-white inline-block ml-2 tracking-wide">ADS SJIT ACM-W</span>
             </Link>
             <div className="hidden md:flex items-center gap-8 text-base font-semibold">
               <Link href="/#about" className="hover:text-[#D2C1B6] transition-colors">About</Link>
