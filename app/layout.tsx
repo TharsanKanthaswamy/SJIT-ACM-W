@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   icons: {
     icon: 'https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp?v=1',
   },
+  verification: {
+    google: "n6HEnPCuUr1V-1bxwIk3IMb_shu15Im6v0oK2XUhl60",
+  },
 }
 
 export default function RootLayout({
