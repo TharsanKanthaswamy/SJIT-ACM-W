@@ -26,13 +26,27 @@ export function TeamHeroSlideshow({ members }: TeamHeroSlideshowProps) {
     type Slide = { members: Member[]; isSolo: boolean }
     const slides: Slide[] = []
 
-    if (membersWithImages.length > 0) {
-        // First slide: first person alone
-        slides.push({ members: [membersWithImages[0]], isSolo: true })
+    const HOD_SLIDE: Member = {
+        id: 'hod_hardcoded',
+        name: 'Dr. R. Priscilla',
+        position: 'Head of the Department (HOD)',
+        image_url: `https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/HOD.webp?v=${Date.now()}`
+    }
 
+    // Always push the HOD slide first as a solo slide
+    slides.push({ members: [HOD_SLIDE], isSolo: true })
+
+    // Filter out the DB HOD if they exist so it's not duplicated
+    // We check if position includes 'hod' or 'head of the department'
+    const nonHodMembers = membersWithImages.filter(m => 
+        !m.position.toLowerCase().includes('hod') && 
+        !m.position.toLowerCase().includes('head of the department')
+    )
+
+    if (nonHodMembers.length > 0) {
         // Remaining slides: groups of 3
-        for (let i = 1; i < membersWithImages.length; i += 3) {
-            slides.push({ members: membersWithImages.slice(i, i + 3), isSolo: false })
+        for (let i = 0; i < nonHodMembers.length; i += 3) {
+            slides.push({ members: nonHodMembers.slice(i, i + 3), isSolo: false })
         }
     }
 
