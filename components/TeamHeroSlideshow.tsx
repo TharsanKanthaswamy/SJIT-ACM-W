@@ -37,11 +37,15 @@ export function TeamHeroSlideshow({ members }: TeamHeroSlideshowProps) {
     slides.push({ members: [HOD_SLIDE], isSolo: true })
 
     // Filter out the DB HOD if they exist so it's not duplicated
-    // We check if position includes 'hod' or 'head of the department'
-    const nonHodMembers = membersWithImages.filter(m => 
-        !m.position.toLowerCase().includes('hod') && 
-        !m.position.toLowerCase().includes('head of the department')
-    )
+    // We check if name includes 'priscilla' or position includes 'head'
+    const nonHodMembers = membersWithImages.filter(m => {
+        const name = m.name.toLowerCase()
+        const pos = m.position.toLowerCase()
+        return !name.includes('priscilla') && 
+               !pos.includes('hod') && 
+               !pos.includes('head of the department') &&
+               !pos.includes('professor and head')
+    })
 
     if (nonHodMembers.length > 0) {
         // Remaining slides: groups of 3
