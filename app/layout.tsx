@@ -19,15 +19,16 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'ADS SJIT ACM-W',
-  description: 'Empowering Women in Computing at St. Joseph\'s Institute of Technology',
+  title: "SJIT ACM-W Chapter | St. Joseph's Institute of Technology",
+  description:
+    "Official ACM-W Student Chapter of St. Joseph's Institute of Technology (SJIT), Chennai. Explore events, team, initiatives, and opportunities for women in computing.",
   icons: {
-    icon: 'https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp?v=1',
+    icon: "https://kburhhdhrzmnbfrutqnu.supabase.co/storage/v1/object/public/assets/ACM-W_logo.webp?v=1",
   },
   verification: {
     google: "n6HEnPCuUr1V-1bxwIk3IMb_shu15Im6v0oK2XUhl60",
   },
-}
+};
 
 export default function RootLayout({
   children,
